@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>Manage Me</title>
+    </head>
+    <body>
+      <h1>Welcome to Manage Me</h1>
+      <div class="event-list">
+        <ul>
+          {% for event in events %}
+            <li>{{ event.events }} - {{ event.event_name }} - {{ event.event_date }} - {{ event.event_time }} - {{ event.category }}
+          {% endfor %}
+          <form method = "post" action = "/results">
+    <p>Event name:</p>
+    <input type = "text" name = "event_name"/>
+    <br>
+    <p>Event date:</p>
+    <input type = "date" name = "event_date"/>
+    <br>
+    <p> Event time:</p>
+    <input type = "time" name = "event_time"/>
+    <br>
+    <p> Event Category: </p>
+    <input type = "text" name = "category"/>
+    <!-- need submit button -->
+    <br>
+    <input type ="submit" value = "submit"/>
+  </form>
+    <form method = "post" action = "/FilterbyCategory" >
+      <p> Type in the category you want to see the events in. </p>
+      <input type = "text" name = "category" <br>
+        <input type ="submit" value = "submit"/>
+    </form>
+  </form>
+    <form method = "post" action = "/Filterbydate" >
+      <p> Select what day you want to see the events at. </p>
+      <input type = "date" name = "event_date" <br>
+        <input type ="submit" value = "submit"/>
+    </form>
+    <button><a href="/deleteall"> Delete all events </a></button> <br>
+    <button><a href="/deleteform"> Delete one event </a></button> <br>
+        </ul>
+      </div>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+
+<html>
+    <head>
+        <title>ManageMe ... Events</title>
+    </head>
+    <body>
+      <h1>ManageMe</h1>
+      <div class="event-list">
+        <ul>
+          {% for event in events %}
+            <li>{{ event.event_name }} - {{ event.event_date }} - {{event.category}} - {{event.event_time}}</li>
+          {% endfor %}
+          <button><a href="/index"> Back </a></button> <br>
+          <!-- set up a form with a post method and results action -->
+    <!-- need event_name and event_date using two text input (bonus- use date) -->
+    <br>
+    <!-- need submit button -->
+    </form>
+        </ul>
+      </div>
+    </body>
+</html>

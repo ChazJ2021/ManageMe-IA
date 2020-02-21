@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Manage Me</title>
+    </head>
+    <body>
+      <h1>Welcome to Manage Me</h1>
+      <form method = "post", action = "/delete">
+          <!-- create a for loop with jinja templating using the list of events -->
+          {% for event in events %}
+            <!-- make a list item (bullet point) -->
+            <!-- for each event, display the event name and date -->
+            <input type = "radio" name = "_id" value = {{event._id}}>{{ event.event_name }} - {{ event.event_date }} - {{event.category}}</input><br>
+            <!-- end for loop using jinja templating -->
+          {% endfor %}
+          <input type = "submit" value = "submit"></input>
+          <button><a href="/index"> Back </a></button> <br>
+
+        <!-- end unordered list -->
+      </form>
+    </body>
+</html>
+      <!-- <div class="event-list">
+          {% for event in events %}
+            <input type = "radio" name = "delete_1" value = {{ event._id }}>{{ event.events }} - {{ event.event_name }} - {{ event.event_date }} - {{ event.event_time }} - {{ event.category }} - <button><a href="/deleteall"> clear </a></button> <br></li>
+          {% endfor %}
+          <form method = "post" action = "/results"> -->
+      <!-- </div> -->
