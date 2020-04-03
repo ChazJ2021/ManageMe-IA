@@ -1,9 +1,25 @@
 <html>
     <head>
         <title>Manage Me</title>
+        <style>
+        body{background-color: thistle;
+          font-family: system ;
+        color: black; font-size: 24}
+        h1 {color: white}
+        input[type="text"] {
+      width: 200px; height: 25px
+  }
+  input[type="date"] {
+  width: 200px; height: 25px
+  }
+  input[type="time"] {
+  width: 200px; height: 25px
+  }
+        </style>
     </head>
     <body>
-      <h1>Welcome to Manage Me</h1>
+      <h1>Delete One Event</h1>
+      <h3>Choose which event you would like to delete: </h3>
       <form method = "post", action = "/delete">
           <!-- create a for loop with jinja templating using the list of events -->
           {% for event in events %}

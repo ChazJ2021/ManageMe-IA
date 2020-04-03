@@ -3,14 +3,36 @@
         <title>Manage Me</title>
     </head>
     <body>
-      <h1>Welcome to Manage Me</h1>
-      {% if session %}<p><a href ="/index">Back</a></p> {% endif %}
+      <h1>My Events</h1>
+      <style>
+      body{background-image: linear-gradient(pink, purple);
+        font-family: system ;
+      color: black;
+  font-size: 24}
+      h1 {color: white;}
+      input[type="text"] {
+    width: 200px; height: 25px
+}
+input[type="date"] {
+width: 200px; height: 25px
+}
+input[type="time"] {
+width: 200px; height: 25px
+}
+button{
+	height:auto;
+	width:auto; text-align: center;}
+      </style>
+
+      {% if session %}<p><a href ="/index">Back</a></p>{% endif %}
       <div class="event-list">
 
 {% if session %}
+<p> Fill out the information below to add an event. Once an event is added, it will appear below:</p>
     {% for event in events %}
       <li>{{ event.events }} - {{ event.event_name }} - {{ event.event_date }} - {{ event.event_time }} - {{ event.category }}
     {% endfor %}
+      <ul>
     <form method = "post" action = "/results">
 <p>Event name:</p>
 <input type = "text" name = "event_name"/>
@@ -25,12 +47,13 @@
 <input type = "text" name = "category"/>
 <!-- need submit button -->
 <br>
+<br>
 <input type ="submit" value = "submit"/>
 </form>
 <button><a href="/deleteall"> Delete all events </a></button> <br>
 <button><a href="/deleteform"> Delete one event </a></button> <br>
 
-  <p><a href= "/logout">Logout</a></p>
+<p><a href= "/logout">Logout</a></p>
 {% else %}
 <h2> Log In:</h2>
       <form method = "POST" action = "/login">

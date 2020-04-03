@@ -2,27 +2,67 @@
     <head>
         <title>Manage Me</title>
     </head>
+    <h1>Welcome to ManageMe</h1>
+    <style>
+    body{background-image: linear-gradient(pink, purple);
+      font-family: system ;
+    color: black; font-size: 22; margin: 0 auto;}
+    h1 {color: white}
+    h4 {font-size: 22}
+    input[type="text"] {
+  width: 200px; height: 25px
+}
+input[type="date"] {
+width: 200px; height: 25px
+}
+input[type="time"] {
+width: 200px; height: 25px
+}
+input[type="password"] {
+width: 200px; height: 25px
+}
+
+    </style>
+    {% if session %}
+    <p><h4> You are logged in as {{session['username']}}. Choose which category you would like to access:</h4></p>
+    <Div class="flex-container">
     <body>
       <style>
-      body{background-color: thistle;text-align: rightcenter;
-      color: black}
-
+      body{background-image: linear-gradient(purple, pink);
+        font-family: system ;
+      color: black; font-size: 18; margin: 0 auto;}
       h1 {color: white}
+      h4 {font-size: 22}
+      .flex-container {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+background-color: transparent;}
 
+.flex-container > div {
+  background-color: white;
+  width: 400px;
+  margin: 20px;
+  text-align: center;
+  line-height: 10px;
+  font-size: 30px; border: pink; border-style: solid; border-width: 20
+}
 
+</style>
+
+<div> </p><h3> Events </h3></p>
+  <p><a href ="/myevents">My Events</a></p>
+  <p><a href ="/eventfilter">Filter Events</a></p></div>
+<div><p><h3> Items </h3></p>
+<p><a href ="/myitems">My Items</a></p>
+<p><a href ="/itemfilter">Filter Items</a></p></div>
+<div><p><h3> General </h3></p>
+<p><a href= "/logout">Logout</a></p>
+<p><a href ="/deleteaccount">Delete Account</a></p></div>
+</div>
       </style>
-      <h1>Welcome to Manage Me</h1>
-      {% if session %}
-      <p> You are logged in as {{session['username']}}. Choose which category you would like to access:</p>
-      <ul><p><a href ="/myevents">My Events</a></p>
-      <p><a href ="/eventfilter">Filter Events</a></p>
-      <p><a href ="/deleteaccount">Delete Account</a></p>
-      <p><a href ="/myitems">My Items</a></p>
-      <p><a href ="/itemfilter">Filter Items</a></p>
       {% endif %}
-      <div class="event-list">
-{% if session %}
-  <p><a href= "/logout">Logout</a></p>
+      {% if session %}
 {% else %}
 <h2> Log In:</h2>
       <form method = "POST" action = "/login">
@@ -31,6 +71,7 @@
         <br>
         <p>User Password:</p>
         <input type = "password" name = "password"/>
+        <br>
         <br>
         <input type ="submit" value = "Log In"/>
       </form>

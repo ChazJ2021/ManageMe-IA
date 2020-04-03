@@ -2,9 +2,24 @@
 <html>
     <head>
         <title>ManageMe ... Items</title>
+        <style>
+        body{background-image: linear-gradient(purple, lavender);
+          font-family: system ;
+        color: black; font-size: 24}
+        h1 {color: white}
+        input[type="text"] {
+      width: 200px; height: 25px
+  }
+  input[type="date"] {
+  width: 200px; height: 25px
+  }
+  input[type="time"] {
+  width: 200px; height: 25px
+  }
+        </style>
     </head>
     <body>
-      <h1>ManageMe</h1>
+      <h1>Filter Items</h1>
       <div class="event-list">
         <ul>
           {% for item in items %}

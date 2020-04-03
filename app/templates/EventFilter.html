@@ -2,9 +2,24 @@
 <html>
     <head>
         <title>ManageMe ... Events</title>
+        <style>
+        body{background-image: linear-gradient(pink, purple);
+          font-family: system ;
+        color: black; font-size: 24}
+        h1 {color: white}
+        input[type="text"] {
+      width: 200px; height: 25px
+  }
+  input[type="date"] {
+  width: 200px; height: 25px
+  }
+  input[type="time"] {
+  width: 200px; height: 25px
+  }
+        </style>
     </head>
     <body>
-      <h1>ManageMe</h1>
+      <h1>Event Filter</h1>
       <div class="event-list">
         <ul>
           {% for event in events %}
@@ -20,7 +35,7 @@
     </form>
     </form>
     <form method = "post" action = "/Filterbydate" >
-    <p> Select what day you want to see the events at. </p>
+    <p> Select what day you want to see the events of. </p>
     <input type = "date" name = "event_date"<br>
       <input type ="submit" value = "submit"/>
       <br>

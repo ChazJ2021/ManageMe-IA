@@ -1,17 +1,30 @@
 <html>
     <head>
         <title>Manage Me</title>
+        <style>
+        body{background-image: linear-gradient(purple, lavender);
+          font-family: system ;
+        color: black; font-size: 24}
+        h1 {color: white}
+        input[type="text"] {
+      width: 200px; height: 25px
+  }
+  input[type="date"] {
+  width: 200px; height: 25px
+  }
+  input[type="time"] {
+  width: 200px; height: 25px
+  }
+        </style>
     </head>
     <body>
-      <h1>Welcome to Manage Me</h1>
-      {% if session %}<p><a href ="/index">Back</a></p> {% endif %}
+      <h1>My Items</h1>
+      {% if session %}<p><a href ="/index">Back</a></p>{% endif %}
       <div class="event-list">
 
 {% if session %}
-  <p> You are logged in as {{session['username']}}.
-    <br>
-    <br>
-  To add an item location type the location using no spaces.</p>
+  <p>
+  Fill out the information below to add an item</p>
   <ul>
     {% for item in items %}
       <li>{{ item.item_name }} - {{ item.item_location }}
@@ -23,9 +36,8 @@
 <p> Item Location: </p>
 <input type = "text" name = "item_location"/>
 <br>
-<br>
 {% for location in locations %}
-  <li>{{ location }} <input type = "radio" name = "savedlocation"/ value = {{location}}>
+  <li>{{ location }} <input type = "radio" name = "savedlocation"/ value = "{{location}}">
 {% endfor %}
 <!-- need submit button -->
 <br>
@@ -33,7 +45,7 @@
 </form>
 <button><a href="/deleteallitems"> Delete all items </a></button> <br>
 <button><a href="/deleteformitem"> Delete one item </a></button> <br>
-  <p><a href= "/logout">Logout</a></p>
+<p><a href= "/logout">Logout</a></p>
 {% else %}
 <h2> Log In:</h2>
       <form method = "POST" action = "/login">

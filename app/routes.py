@@ -208,7 +208,7 @@ def deleteformitem():
     collection = mongo.db.items
     items = list(collection.find({}))
     print (items)
-    return render_template('deleteformitem.html')
+    return render_template('deleteformitem.html', items = items)
 
 @app.route('/delete', methods=['get', 'post'])
 def delete():
