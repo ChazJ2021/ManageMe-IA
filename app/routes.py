@@ -72,7 +72,7 @@ def signup():
             if FamilyMemberemail == "":
                 print(FamilyMemberemail, "yyyyyyy")
                 users.insert({'email' : request.form['email'], 'password' : request.form['password'], 'username' : request.form['username'], "FamilyEmail" : request.form['email']})
-                session['email'] = request.form['email']
+                session['email'] = request.form['FamilyMemberemail']
                 session['username']= request.form['username']
             else:
                 print("This user is signing up with a family username")
@@ -102,7 +102,10 @@ def login():
 
     if login_user:
         if request.form['password'] == login_user['password']:
-            session ['email'] = login_user['email']
+            if login_user['FamilyEmail']:
+                session ['email'] = login_user['FamilyEmail']
+            else:
+                session ['email'] = login_user['email']
             session['username'] = login_user['username']
             return redirect (url_for('index'))
 
@@ -144,6 +147,14 @@ def FilterbyCategory():
     user_info = dict(request.form)
     category = user_info["category"]
     filterevents = list(collection.find({"category": category}))
+    return render_template('EventFilter.html', events = filterevents)
+
+@app.route('/Filterbyeventname', methods = ["get","post"])
+def Filterbyeventname():
+    collection = mongo.db.events
+    user_info = dict(request.form)
+    event_name = user_info["event_name"]
+    filterevents = list(collection.find({"event_name": event_name}))
     return render_template('EventFilter.html', events = filterevents)
 
 @app.route('/Filterbyitemname', methods = ["get","post"])
@@ -312,8 +323,7 @@ def myitems():
     #connect to mongo DB
     item_collection = mongo.db.items
     #find all data
-    name = session['username']
-    items = list(item_collection.find({"username":session["username"]}))
+    items = list(item_collection.find({"username":session["email"]}))
     print(items)
     locations = []
     final_items = []
